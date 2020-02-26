@@ -1,0 +1,4 @@
+_cookie_admin_config:
+    resource: "@CookieBundle/Controller/"
+    type:     annotation
+    prefix:   /admin

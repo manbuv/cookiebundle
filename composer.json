@@ -1,0 +1,28 @@
+{
+  "name": "manbuv/cookie",
+  "description": "CookieBundle",
+  "type": "pimcore-bundle",
+  "require": {
+    "pimcore/pimcore": ">=5.4",
+    "php": ">=7.2"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "manbuv"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "CookieBundle\\": "src/CookieBundle"
+    }
+  },
+  "extra": {
+    "pimcore": {
+      "bundles": [
+        "CookieBundle\\CookieBundle"
+      ]
+    }
+  },
+  "minimum-stability": "dev"
+}
