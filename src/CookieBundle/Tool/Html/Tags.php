@@ -36,6 +36,7 @@ class Tags
     {
         $locale = $request->getLocale();
         $isDdev = $_SERVER["IS_DDEV"];
+        //$isDdev = false;
 
         $db = \Pimcore\Db::getConnection();
         $q = " SELECT * FROM translations_website WHERE language = '{$locale}' ";
@@ -69,6 +70,10 @@ class Tags
         $config = \CookieBundle\Tool\Config::get(true);
         $services = $config['service'];
 
+        //497563240908752
+        //$script .= "cbCookie.job.push('facebookpixel'); \n";
+        //$script .= "cbCookie.user.facebookpixelId = '497563240908752'; \n";
+
         if ($services['gtag']) {
             if ($services['gtagUa'])
                 $script .= "cbCookie.user.gtagUa = '". $services['gtagUa'] ."'; \n";
@@ -82,6 +87,11 @@ class Tags
         if ($services['googleMaps']) {
             $script .= "cbCookie.user.googleMapsApiKey = '". $services['googleMapsApiKey'] ."'; \n";
             $script .= "cbCookie.job.push('googleMaps'); \n";
+        }
+
+        if ($services['facebookPixel']) {
+            $script .= "cbCookie.user.facebookPixelId = '". $services['facebookPixelId'] ."'; \n";
+            $script .= "cbCookie.job.push('facebookPixel'); \n";
         }
 
         if ($services['youtube']) {

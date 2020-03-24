@@ -1,4 +1,3 @@
-
 pimcore.registerNS("cookiebundle.settings");
 
 cookiebundle.settings = Class.create({
@@ -23,8 +22,6 @@ cookiebundle.settings = Class.create({
 
 
     getTabPanel: function () {
-
-        console.log('###');
 
         var values = this.values;
         //var config = this.config;
@@ -52,8 +49,8 @@ cookiebundle.settings = Class.create({
                 return {
                     xtype: 'box',
                     hidden: false,
-                    autoEl : {
-                        tag : 'hr'
+                    autoEl: {
+                        tag: 'hr'
                     }
                 }
             }
@@ -77,12 +74,12 @@ cookiebundle.settings = Class.create({
                     }
                 ],
                 items: [
-                {
-                    fieldLabel: ('Google Analytics (gtag.js)'),
-                    xtype: "checkbox",
-                    name: "service.gtag",
-                    checked: service.gtag
-                },
+                    {
+                        fieldLabel: ('Google Analytics (gtag.js)'),
+                        xtype: "checkbox",
+                        name: "service.gtag",
+                        checked: service.gtag
+                    },
                     {
                         fieldLabel: ("UA (Tracking-ID)"),
                         xtype: "textfield",
@@ -91,49 +88,65 @@ cookiebundle.settings = Class.create({
                         width: 600
                     },
                     dividor(),
-                {
-                    fieldLabel: t('Google Maps'),
-                    xtype: "checkbox",
-                    name: "service.googleMaps",
-                    checked: service.googleMaps
-                },
-                {
-                    fieldLabel: t("Google Maps Apikey"),
-                    xtype: "textfield",
-                    name: "service.googleMapsApiKey",
-                    value: service.googleMapsApiKey,
-                    width: 600
-                },
-                dividor(),
-                {
-                    fieldLabel: t('Youtube (iFrame)'),
-                    xtype: "checkbox",
-                    name: "service.youtube",
-                    value: service.youtube,
-                },
-                dividor(),
-                {
-                    fieldLabel: t('Vimeo (iFrame)'),
-                    xtype: "checkbox",
-                    name: "service.vimeo",
-                    value: service.vimeo,
-                },
-                dividor(),
-                {
-                    fieldLabel: t('Webcontent (iFrames)'),
-                    xtype: "checkbox",
-                    name: "service.webContent",
-                    value: service.webContent,
-                },
-                dividor(),
-                {
-                    fieldLabel: ('recaptcha (v2 - Google)'),
-                    xtype: "checkbox",
-                    name: "service.recaptcha",
-                    value: service.recaptcha,
-                },
+                    {
+                        fieldLabel: t('Google Maps'),
+                        xtype: "checkbox",
+                        name: "service.googleMaps",
+                        checked: service.googleMaps
+                    },
+                    {
+                        fieldLabel: t("Google Maps Apikey"),
+                        xtype: "textfield",
+                        name: "service.googleMapsApiKey",
+                        value: service.googleMapsApiKey,
+                        width: 600
+                    },
                     dividor(),
-            ]
+
+                    {
+                        fieldLabel: t('Facebook-Pixel'),
+                        xtype: "checkbox",
+                        name: "service.facebookPixel",
+                        checked: service.facebookPixel
+                    },
+                    {
+                        fieldLabel: t("Facebook-Pixel-ID"),
+                        xtype: "textfield",
+                        name: "service.facebookPixelId",
+                        value: service.facebookPixelId,
+                        width: 600
+                    },
+
+                    dividor(),
+                    {
+                        fieldLabel: t('Youtube (iFrame)'),
+                        xtype: "checkbox",
+                        name: "service.youtube",
+                        value: service.youtube,
+                    },
+                    dividor(),
+                    {
+                        fieldLabel: t('Vimeo (iFrame)'),
+                        xtype: "checkbox",
+                        name: "service.vimeo",
+                        value: service.vimeo,
+                    },
+                    dividor(),
+                    {
+                        fieldLabel: t('Webcontent (iFrames)'),
+                        xtype: "checkbox",
+                        name: "service.webContent",
+                        value: service.webContent,
+                    },
+                    dividor(),
+                    {
+                        fieldLabel: ('recaptcha (v2 - Google)'),
+                        xtype: "checkbox",
+                        name: "service.recaptcha",
+                        value: service.recaptcha,
+                    },
+                    dividor(),
+                ]
             });
 
             this.panel.add(this.layout);
@@ -148,7 +161,7 @@ cookiebundle.settings = Class.create({
         return this.panel;
     },
 
-    minify: function() {
+    minify: function () {
         alert('minify');
     },
 
