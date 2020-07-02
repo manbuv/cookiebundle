@@ -22,9 +22,3 @@ composer require manbuv/cookie
 ### Installation via CommandLine
 After installed the Bundle via composer:
 - Execute: `$ bin/console pimcore:bundle:enable CookieBundle`
-- Execute: `$ bin/console pimcore:bundle:install CookieBundle`
-
----
-
-
-- [Translation CSV](/src/CookieBundle/Resources/translation/cb-translations.csv)
