@@ -1,7 +1,7 @@
 Pimcore CookieBundle
 ================
 
-####Supported Services:
+#### Supported Services:
 - Google Analytics (gtag.js)
 - Google Tag Manager
 - Google Maps
@@ -12,7 +12,7 @@ Pimcore CookieBundle
 
 
 #### Requirements
-* Pimcore >= 6.0.0
+* Pimcore >= 5.4
 
 
 ### Installation
