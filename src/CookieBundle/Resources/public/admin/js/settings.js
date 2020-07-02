@@ -33,11 +33,11 @@ cookiebundle.settings = Class.create({
             this.panel = Ext.create('Ext.panel.Panel', {
                 //id: "pimcore_settings_system",
                 id: "cookiebundle_settings",
-                title: t("cookiebundle_settings"),
+                title: t("CookieBundle Settings"),
                 iconCls: "pimcore_icon_system",
                 border: false,
                 layout: "fit",
-                closable: true
+                closable: true,
             });
 
 
@@ -68,20 +68,27 @@ cookiebundle.settings = Class.create({
                 },
                 buttons: [
                     {
+                        id: 'cb_cookie_import_translations',
+                        text: t("Import Translations"),
+                        handler: this.importTranslations.bind(this),
+                        iconCls: "pimcore_nav_icon_translations",
+                    },
+                    {
                         text: t("save"),
                         handler: this.save.bind(this),
-                        iconCls: "pimcore_icon_apply"
+                        iconCls: "pimcore_icon_apply",
                     }
                 ],
                 items: [
+                    dividor(),
                     {
-                        fieldLabel: ('Google Analytics (gtag.js)'),
+                        fieldLabel: 'Google Analytics (gtag.js)',
                         xtype: "checkbox",
                         name: "service.gtag",
                         checked: service.gtag
                     },
                     {
-                        fieldLabel: ("UA (Tracking-ID)"),
+                        fieldLabel: "UA (Tracking-ID)",
                         xtype: "textfield",
                         name: "service.gtagUa",
                         value: service.gtagUa,
@@ -89,7 +96,21 @@ cookiebundle.settings = Class.create({
                     },
                     dividor(),
                     {
-                        fieldLabel: t('Google Maps'),
+                        fieldLabel: 'Google Tagmanager',
+                        xtype: "checkbox",
+                        name: "service.googleTagmanager",
+                        checked: service.googleTagmanager
+                    },
+                    {
+                        fieldLabel: "Google Tagmanager ID (GTM-XXXX)",
+                        xtype: "textfield",
+                        name: "service.googleTagmanagerId",
+                        value: service.googleTagmanagerId,
+                        width: 600
+                    },
+                    dividor(),
+                    {
+                        fieldLabel: 'Google Maps',
                         xtype: "checkbox",
                         name: "service.googleMaps",
                         checked: service.googleMaps
@@ -104,13 +125,13 @@ cookiebundle.settings = Class.create({
                     dividor(),
 
                     {
-                        fieldLabel: t('Facebook-Pixel'),
+                        fieldLabel: 'Facebook-Pixel',
                         xtype: "checkbox",
                         name: "service.facebookPixel",
                         checked: service.facebookPixel
                     },
                     {
-                        fieldLabel: t("Facebook-Pixel-ID"),
+                        fieldLabel: "Facebook-Pixel-ID",
                         xtype: "textfield",
                         name: "service.facebookPixelId",
                         value: service.facebookPixelId,
@@ -119,28 +140,28 @@ cookiebundle.settings = Class.create({
 
                     dividor(),
                     {
-                        fieldLabel: t('Youtube (iFrame)'),
+                        fieldLabel: 'Youtube (iFrame)',
                         xtype: "checkbox",
                         name: "service.youtube",
                         value: service.youtube,
                     },
                     dividor(),
                     {
-                        fieldLabel: t('Vimeo (iFrame)'),
+                        fieldLabel: 'Vimeo (iFrame)',
                         xtype: "checkbox",
                         name: "service.vimeo",
                         value: service.vimeo,
                     },
                     dividor(),
                     {
-                        fieldLabel: t('Webcontent (iFrames)'),
+                        fieldLabel: 'Webcontent (iFrames)',
                         xtype: "checkbox",
                         name: "service.webContent",
                         value: service.webContent,
                     },
                     dividor(),
                     {
-                        fieldLabel: ('recaptcha (v2 - Google)'),
+                        fieldLabel: 'recaptcha (v2 - Google)',
                         xtype: "checkbox",
                         name: "service.recaptcha",
                         value: service.recaptcha,
@@ -184,14 +205,35 @@ cookiebundle.settings = Class.create({
                 try {
                     var res = Ext.decode(response.responseText);
                     if (res.success) {
-                        pimcore.helpers.showNotification(t('success'), t('cbCookie_settings_save_success'), 'success');
+                        pimcore.helpers.showNotification(t('success'), t('saved_successfully'), 'success');
 
                     } else {
-                        pimcore.helpers.showNotification(t('error'), t('papillotool_settings_save_error'),
+                        pimcore.helpers.showNotification(t('error'), t('error_general'),
                             'error', t(res.message));
                     }
                 } catch (e) {
-                    pimcore.helpers.showNotification(t('error'), t('papillotool_settings_save_error'), 'error');
+                    pimcore.helpers.showNotification(t('error'), t('error_general'), 'error');
+                }
+            }
+        });
+    },
+
+    importTranslations: function () {
+        Ext.Ajax.request({
+            url: '/admin/cbcookie/importTranslations',
+            method: "PUT",
+            success: function (response) {
+                try {
+                    var res = Ext.decode(response.responseText);
+                    if (res.success) {
+                        pimcore.helpers.showNotification(t('success'), t('saved_successfully'), 'success');
+
+                    } else {
+                        pimcore.helpers.showNotification(t('error'), t('error_general'),
+                            'error', t(res.message));
+                    }
+                } catch (e) {
+                    pimcore.helpers.showNotification(t('error'), t('error_general'), 'error');
                 }
             }
         });

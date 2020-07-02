@@ -4,9 +4,12 @@
 namespace CookieBundle\Controller;
 
 use CookieBundle\CookieBundle;
+use Doctrine\DBAL\Migrations\AbortMigrationException;
 use Pimcore\Controller\FrontendController;
+use Pimcore\Tool\Admin;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
+use Pimcore\Model\Translation;
 
 use Pimcore\Bundle\AdminBundle\HttpFoundation\JsonResponse;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -46,12 +49,26 @@ class AdminController extends FrontendController
         $data = json_decode($request->get('data'));
         $values = (array)$data;
 
+        $config = \CookieBundle\Tool\Config::get();
+        $version = $config['values']['version'];
+        if (!$version)
+            $version = 1;
+        else
+            $version++;
+
+        // Google Analytics
         $settings['service']['gtag'] = $values['service.gtag'];
         $settings['service']['gtagUa'] = $values['service.gtagUa'];
 
+        // Google Tagmanager
+        $settings['service']['googleTagmanager'] = $values['service.googleTagmanager'];
+        $settings['service']['googleTagmanagerId'] = $values['service.googleTagmanagerId'];
+
+        // Google Maps
         $settings['service']['googleMaps'] = $values['service.googleMaps'];
         $settings['service']['googleMapsApiKey'] = $values['service.googleMapsApiKey'];
 
+        // Facebook Pixel
         $settings['service']['facebookPixel'] = $values['service.facebookPixel'];
         $settings['service']['facebookPixelId'] = $values['service.facebookPixelId'];
 
@@ -60,7 +77,31 @@ class AdminController extends FrontendController
         $settings['service']['webContent'] = $values['service.webContent'];
         $settings['service']['recaptcha'] = $values['service.recaptcha'];
 
+        $settings['version'] = $version;
+
         \CookieBundle\Tool\Config::save($settings);
+
+        $output = [
+            'success' => true
+        ];
+
+        $this->adminJson($output);
+    }
+
+
+    /**
+     * @param Request $request
+     * @Route("/importTranslations")
+     */
+    public function importTranslationsAction(Request $request)
+    {
+        $csv = PIMCORE_COMPOSER_PATH . '/manbuv/cookie/src/CookieBundle/Resources/translation/cb-translations.csv';
+
+        try {
+            Translation\Website::importTranslationsFromFile($csv, true, Admin::getLanguages());
+        } catch (\Exception $e) {
+            throw new AbortMigrationException(sprintf('Failed to install admin translations. "%s"', $e->getMessage()));
+        }
 
         $output = [
             'success' => true

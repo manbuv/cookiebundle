@@ -16,7 +16,7 @@ class Iframe
     public static function getHtmlElement($iframe, $cookie = false)
     {
         $iframeSrc = $iframe->src;
-        $provider = (new Iframe)->getProvicer($iframeSrc);
+        $provider = (new Iframe)->getProvider($iframeSrc);
 
         $providerClass = 'webContent';
         if (in_array($provider, ['youtube', 'vimeo'])) {
@@ -46,9 +46,9 @@ class Iframe
 
             $serviceContent = '<div class="cb_inner_active cb_bg_cover" style="background-image: url('. $backgroundImg .')">
                                     <div class="cb_float '. $bgImgClass .'">
-                                        <div class="cb_active_title"> '. $providerArr[$provider] .' <span cb-trans="fallback"></span></div>
+                                        <div class="cb_active_title"> '. $providerArr[$provider] .' <span cb-trans="cb_fallback"></span></div>
                                         <div class="cg_active_info">'. $sourceInfo .'</div>
-                                        <button type="button" class="cb_btn_blocked" onclick="cbCookie.service.change(this, true)" cb-service="'. $provider .'">✓ <span cb-trans="allow"></span></button>
+                                        <button type="button" class="cb_btn_blocked" onclick="cbCookie.service.change(this, true)" cb-service="'. $provider .'">✓ <span cb-trans="cb_allow"></span></button>
                                     </div>
                                 </div>';
             $iframe->src = '';
@@ -117,7 +117,7 @@ class Iframe
      * @param $url
      * @return string
      */
-    private function getProvicer($url)
+    private function getProvider($url)
     {
         if (preg_match('%youtube|youtu\.be%i', $url)) {
             return 'youtube';

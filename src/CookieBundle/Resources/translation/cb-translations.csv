@@ -16,10 +16,10 @@ cb_disclaimer;Wenn Sie diese Dienste nutzen, erlauben Sie deren 'Cookies' und Tr
 cb_allow;Erlauben;Allow;Autoriser;Permitir;Consenti;Toestaan;Позролить
 cb_deny;Ablehnen;Deny;Interdire;Denegar;Blocca;Weigeren;Не позволить
 cb_noCookie;Dieser Dienst nutzt keine 'Cookies'.;This service does not use cookie.;Ce service ne dépose aucun cookie.;Este servicio no usa cookies.;Questo servizio non invia nessun cookie;Deze service gebruikt geen cookie;Этот сервис не использует кукис.
-cb_useCookie;Dieser Dienst kann 'Cookies' verwenden;This service can install 'Cookies';Ce service peut déposer;Este servicio puede instalar;Questo servizio puo' inviare;Deze service kan worden geïnstalleerd;Этот сервис может быть инсталирован
-cb_useCookieCurrent;Dieser Dienst verwendet;This service has installed;Ce service a déposé;Este servicio ha instalado;Questo servizio ha inviato;Deze service is geïnstalleerd;Этот сервис инсталирован
+cb_useCookie;Dieser Dienst verwendet 'Cookies';This service uses 'cookies';Ce service utilise des 'cookies';Este servicio utiliza 'cookies';Questo servizio utilizza 'cookies';Deze dienst maakt gebruik van 'cookies';Этот сервис использует куки
+cb_canUseCookie;Dieser Dienst kann 'Cookies' verwenden;This service can use 'cookies';Ce service peut utiliser des 'cookies';Este servicio puede usar 'cookies';Questo servizio può utilizzare i 'cookie';Deze dienst kan 'cookies' gebruiken;Этот сервис может использовать куки
 cb_useNoCookie;Dieser Dienst hat keine 'Cookies' installiert.;This service has not installed any cookie.;Ce service n'a déposé aucun cookie.;Este servicio no ha instalado ninguna cookie.;Questo servizio non ha inviato nessun cookie;Deze service heeft geen cookies geïnstalleerd.;Этот сервис не использует кукис.
-cb_more;Weiter lesen;Read more;En savoir plus;Leer más;Saperne di più;Lees meer;Подробнее
+cb_more;weiterlesen;Read more;En savoir plus;Leer más;Saperne di più;Lees meer;Подробнее
 cb_source;Zur offiziellen Webseite;View the official website;Voir le site officiel;Ver sitio web oficial;Vai al sito ufficiale;Bekijk de officiële website;Посетите официальный сайт
 cb_toggleInfoBox;Zeige/Verberge Cookie-Einstellungen;Show/hide informations about cookie storage;Afficher/masquer les informations sur le stockage des cookies;Mostrar/ocultar información sobre almacenamiento de cookies;Show/hide informations about cookie storage;Toon/verberg informatie over cookie opslag;Show/hide informations about cookie storage
 cb_title;Cookie-Einstellungen;Cookies management panel;Panneau de gestion des cookies;Panel de gestión de cookies;Cookies management panel;Cookies beheer paneel;Cookies management panel

@@ -60,19 +60,20 @@ class Tags
         $javascriptContent = file_get_contents($javascriptPath);
         $cssContent = file_get_contents($cssPath);
 
+        $config = \CookieBundle\Tool\Config::get(true);
 
-        $files  = "\n" . '<script type="text/javascript">'. $javascriptContent . $translations .'</script>' . "\n";
+        $files  = "\n" . '<script type="text/javascript" id="cbCookieScript" data-version="'. $config['version'] .'">'. $javascriptContent . $translations .'</script>' . "\n";
         $files .= '<style>'. $cssContent .'</style>'. "\n";
 
         $script = "<script>\n";
         $script .= "cbCookie.job = []; \n";
 
-        $config = \CookieBundle\Tool\Config::get(true);
         $services = $config['service'];
 
-        //497563240908752
-        //$script .= "cbCookie.job.push('facebookpixel'); \n";
-        //$script .= "cbCookie.user.facebookpixelId = '497563240908752'; \n";
+        if ($services['googleTagmanager']) {
+            $script .= "cbCookie.user.googleTagmanagerId = '". $services['googleTagmanagerId'] ."'; \n";
+            $script .= "cbCookie.job.push('googleTagmanager'); \n";
+        }
 
         if ($services['gtag']) {
             if ($services['gtagUa'])
@@ -163,7 +164,7 @@ class Tags
                                                 </div>
                                             </div>
                                             <div class="cbs_list_right">
-                                                <button class="cb_btn_allow active" disabled style="cursor: default">✓ Allow</button> 
+                                                <button class="cb_btn_allow active" disabled style="cursor: default">✓ <span cb-trans="cb_allow"></button> 
                                             </div>
                                      </li>
                                 </ul>

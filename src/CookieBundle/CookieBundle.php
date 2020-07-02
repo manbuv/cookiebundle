@@ -27,7 +27,7 @@ class CookieBundle extends AbstractPimcoreBundle
      */
     public function getVersion()
     {
-        return 'v1.1';
+        return 'v1.2';
     }
 
 
@@ -39,6 +39,16 @@ class CookieBundle extends AbstractPimcoreBundle
         return [
             '/bundles/cookie/admin/js/menu.js',
             '/bundles/cookie/admin/js/settings.js',
+        ];
+    }
+
+    /**
+     * @return array|\Pimcore\Routing\RouteReferenceInterface[]|string[]
+     */
+    public function getCssPaths()
+    {
+        return [
+            '/bundles/cookie/admin/css/styles.css',
         ];
     }
 
