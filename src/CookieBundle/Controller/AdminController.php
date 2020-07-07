@@ -67,6 +67,7 @@ class AdminController extends FrontendController
         // Google Maps
         $settings['service']['googleMaps'] = $values['service.googleMaps'];
         $settings['service']['googleMapsApiKey'] = $values['service.googleMapsApiKey'];
+        $settings['service']['googleMapsLibraries'] = (!$values['service.googleMapsLibraries']) ? 'places' : $values['service.googleMapsLibraries'];
 
         // Facebook Pixel
         $settings['service']['facebookPixel'] = $values['service.facebookPixel'];

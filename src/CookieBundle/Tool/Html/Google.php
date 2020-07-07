@@ -27,8 +27,8 @@ class Google
         $div->innertext = '<div class="cb_container cb_container_loading">
                                 <div class="cb_inner_active">
                                     <div class="cb_float">
-                                        <div class="cb_active_title">Google Maps <span cb-trans="fallback"></span></div>
-                                        <button type="button" class="cb_btn_blocked" onclick="cbCookie.service.change(this, true)" cb-service="googleMaps">✓ <span cb-trans="allow"></span></button>
+                                        <div class="cb_active_title">Google Maps <span cb-trans="cb_fallback"></span></div>
+                                        <button type="button" class="cb_btn_blocked" onclick="cbCookie.service.change(this, true)" cb-service="googleMaps">✓ <span cb-trans="cb_allow"></span></button>
                                     </div>
                                 </div>
                             </div>';
@@ -53,8 +53,8 @@ class Google
         $caContinerClass = '';
         if (!Services::isAllowed('googleMaps')) {
             $caFlexbox = '<div class="cb_inner_box_flex">
-                        <div class="cb_text">Google Maps <span cb-trans="fallback"></span></div>
-                        <button type="button" class="cb_btn_blocked cb_btn_googleAutocomplete" onclick="cbCookie.service.change(this, true)" cb-service="googleMaps">✓ <span cb-trans="allow"></span></button>
+                        <div class="cb_text">Google Maps <span cb-trans="cb_fallback"></span></div>
+                        <button type="button" class="cb_btn_blocked cb_btn_googleAutocomplete" onclick="cbCookie.service.change(this, true)" cb-service="googleMaps">✓ <span cb-trans="cb_allow"></span></button>
                       </div>';
             $caContinerClass = 'cb_container_loading';
         }
@@ -81,11 +81,11 @@ class Google
 
         $div->innertext = '<div class="ca_googleRecaptcha_container cb_container_loading">
                                 <div class="cb_inner_box_flex cb_flex_column">
-                                <div class="cb_text">reCAPTCHA <span cb-trans="fallback"></span></div>
-                                <button type="button" class="cb_btn_blocked" onclick="cbCookie.service.change(this, true)" cb-service="recaptcha">✓ <span cb-trans="allow"></button>
+                                <div class="cb_text">reCAPTCHA <span cb-trans="cb_fallback"></span></div>
+                                <button type="button" class="cb_btn_blocked" onclick="cbCookie.service.change(this, true)" cb-service="recaptcha">✓ <span cb-trans="cb_allow"></button>
                                 </div>                                
                            </div>';
 
     }
-    
+
 }

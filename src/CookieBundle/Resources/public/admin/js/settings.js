@@ -80,7 +80,6 @@ cookiebundle.settings = Class.create({
                     }
                 ],
                 items: [
-                    dividor(),
                     {
                         fieldLabel: 'Google Analytics (gtag.js)',
                         xtype: "checkbox",
@@ -116,11 +115,21 @@ cookiebundle.settings = Class.create({
                         checked: service.googleMaps
                     },
                     {
-                        fieldLabel: t("Google Maps Apikey"),
+                        fieldLabel: "Google Maps Apikey",
                         xtype: "textfield",
                         name: "service.googleMapsApiKey",
                         value: service.googleMapsApiKey,
                         width: 600
+                    },
+                    {
+                        fieldLabel: "Google Maps Libraries",
+                        xtype: "textfield",
+                        name: "service.googleMapsLibraries",
+                        value: service.googleMapsLibraries,
+                        width: 600
+                    },
+                    {
+                        html: "<p>Comma separated Libraries (Default: <b>places</b>)</p>"
                     },
                     dividor(),
 

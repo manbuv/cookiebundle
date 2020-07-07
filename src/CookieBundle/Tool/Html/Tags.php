@@ -87,6 +87,7 @@ class Tags
 
         if ($services['googleMaps']) {
             $script .= "cbCookie.user.googleMapsApiKey = '". $services['googleMapsApiKey'] ."'; \n";
+            $script .= "cbCookie.user.googleMapsLibraries = '". $services['googleMapsLibraries'] ."'; \n";
             $script .= "cbCookie.job.push('googleMaps'); \n";
         }
 
@@ -170,6 +171,9 @@ class Tags
                                 </ul>
                                     <ul id="cbs_service_list">
                                     </ul>
+                                </div>
+                                <div class="cbs_close_bottom">
+                                <button class="cbs_close" onclick="cbCookie.popup.close()">✓ <span cb-trans="cb_save_and_close"></span></button>
                                 </div>
                             </div>
                         </div>

@@ -10,6 +10,8 @@ Pimcore CookieBundle
 - Vimeo (iFrame)
 - Webcontent (iFrame)
 
+![image](doc/backend.png)
+
 
 #### Requirements
 * Pimcore >= 5.4
@@ -22,3 +24,15 @@ composer require manbuv/cookie
 ### Installation via CommandLine
 After installed the Bundle via composer:
 - Execute: `$ bin/console pimcore:bundle:enable CookieBundle`
+
+
+### Activate Cookie Consent
+Add Attribute **cbcookie** in body Tag `<body cbcookie="1">`
+
+---
+
+#### Google Maps JavaScript API
+ `<div id="map" class="cb_googleMaps_map_container" cb-callback="initMap" style="height: 75vh"></div>`
+
+
+
