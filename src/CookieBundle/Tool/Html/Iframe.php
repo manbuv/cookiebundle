@@ -95,16 +95,28 @@ class Iframe
             return '/var/' . $provider .'-pv-' . $id . '.jpg';
         } else {
 
+            $placeholder = file_get_contents(PIMCORE_WEB_ROOT . '/bundles/cookie/img/gmaps.png');
+
             if ($provider == 'youtube') {
-                $fileContent = file_get_contents('https://img.youtube.com/vi/'. $id .'/maxresdefault.jpg');
-                file_put_contents($fileName, $fileContent);
+                try {
+                    $fileContent = file_get_contents('https://img.youtube.com/vi/'. $id .'/maxresdefault.jpg');
+                    file_put_contents($fileName, $fileContent);
+                } catch (\Exception $e) {
+                    file_put_contents($fileName, $placeholder);
+                }
             }
             if ($provider == 'vimeo') {
-                $data = file_get_contents("https://vimeo.com/api/v2/video/$id.json");
-                $data = json_decode($data);
-                if ($data[0]) {
-                    $fileContent = file_get_contents($data[0]->thumbnail_large);
-                    file_put_contents($fileName, $fileContent);
+                try {
+                    $data = file_get_contents("https://vimeo.com/api/v2/video/$id.json");
+                    $data = json_decode($data);
+                    if ($data[0]) {
+                        $fileContent = file_get_contents($data[0]->thumbnail_large);
+                        file_put_contents($fileName, $fileContent);
+                    } else {
+                        file_put_contents($fileName, $placeholder);
+                    }
+                } catch (\Exception $e) {
+                    file_put_contents($fileName, $placeholder);
                 }
             }
 
