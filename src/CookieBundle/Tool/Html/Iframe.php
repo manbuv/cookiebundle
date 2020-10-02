@@ -95,14 +95,19 @@ class Iframe
             return '/var/' . $provider .'-pv-' . $id . '.jpg';
         } else {
 
-            $placeholder = file_get_contents(PIMCORE_WEB_ROOT . '/bundles/cookie/img/gmaps.png');
+            $placeholder = file_get_contents(PIMCORE_WEB_ROOT . '/bundles/cookie/img/video_placeholder.jpg');
 
             if ($provider == 'youtube') {
                 try {
                     $fileContent = file_get_contents('https://img.youtube.com/vi/'. $id .'/maxresdefault.jpg');
                     file_put_contents($fileName, $fileContent);
                 } catch (\Exception $e) {
-                    file_put_contents($fileName, $placeholder);
+                    try {
+                        $fileContent = file_get_contents('https://img.youtube.com/vi/'. $id .'/hqdefault.jpg');
+                        file_put_contents($fileName, $fileContent);
+                    } catch (\Exception $e) {
+                        file_put_contents($fileName, $placeholder);
+                    }
                 }
             }
             if ($provider == 'vimeo') {
