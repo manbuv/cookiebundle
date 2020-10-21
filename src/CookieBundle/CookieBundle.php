@@ -27,7 +27,7 @@ class CookieBundle extends AbstractPimcoreBundle
      */
     public function getVersion()
     {
-        return 'v1.3.4';
+        return 'v1.3.5';
     }
 
 
